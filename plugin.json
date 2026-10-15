@@ -1,0 +1,103 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "book-a-sponsor",
+  "version": "1.0.0",
+  "description": "Find the brands that sponsor newsletters like yours, see where and when their ads ran, and check what newsletters charge for a sponsor slot.",
+  "author": {
+    "name": "Sales.co",
+    "email": "hello@sponsorradar.co",
+    "url": "https://bookasponsor.com"
+  },
+  "homepage": "https://bookasponsor.com",
+  "keywords": [
+    "newsletter",
+    "sponsors",
+    "sponsorship",
+    "newsletter monetization",
+    "advertising"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Book a Sponsor",
+        "shortDescription": "Find sponsors for newsletters",
+        "longDescription": "Book a Sponsor reads published newsletter issues and records which brands ran ads in them. Give it your newsletter's web address and it finds similar newsletters and lists the brands that sponsored them, with the newsletter and date of each ad, so you know who already buys newsletter ads in your space. You can also ask which brands sponsor newsletters overall or in a topic such as AI, finance or marketing, and what newsletters charge for the main sponsor slot of one issue at your list size, from prices newsletters publish on their own advertise pages.\n\nResults name brands and where their ads ran. They do not include people's names or email addresses. A scan reads only public pages; a newsletter that cannot be read from its website, or that already has a Book a Sponsor account, is not scanned here. Political and adult newsletters are left out.",
+        "developerName": "Sales.co",
+        "category": "Business & Operations",
+        "capabilities": [
+          "Find brands that sponsor similar newsletters",
+          "List brands sponsoring newsletters by topic",
+          "Newsletter sponsorship rates by list size"
+        ],
+        "websiteURL": "https://bookasponsor.com",
+        "supportURL": "https://bookasponsor.com/company",
+        "privacyPolicyURL": "https://bookasponsor.com/privacy",
+        "termsOfServiceURL": "https://bookasponsor.com/terms",
+        "defaultPrompt": [
+          "Which brands might sponsor my newsletter?",
+          "What brands sponsor AI newsletters?",
+          "What should I charge for a sponsor slot at 12,000 subscribers?"
+        ],
+        "brandColor": "#C4261F",
+        "brandColorDark": "#FF6B5E",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Brands that sponsored newsletters similar to a given newsletter",
+              "prompt": "Which brands might sponsor my newsletter, notboring.co?",
+              "tools_triggered": "find_newsletter_sponsors",
+              "expected_behavior": "Returns Not Boring's newsletter details, a few similar newsletters, and up to 8 brands that sponsored similar newsletters, each with the newsletter and date where its ad ran, plus the results page link. No person's name or email address appears."
+            },
+            {
+              "description": "Read back a scan that was already started",
+              "prompt": "Is the sponsor scan for notboring.co finished? Show me the brands.",
+              "tools_triggered": "get_sponsor_scan",
+              "expected_behavior": "Returns the completed scan for notboring.co: the same brands, newsletters and dates as find_newsletter_sponsors, and the results page link."
+            },
+            {
+              "description": "Brands sponsoring newsletters in one topic",
+              "prompt": "What brands sponsor AI newsletters?",
+              "tools_triggered": "list_brands_sponsoring_newsletters",
+              "expected_behavior": "Returns how many brands sponsored AI newsletters in the last 12 months and the up to 12 brands seen in the most AI newsletters, each with its domain and newsletter count, the update date and the source page."
+            },
+            {
+              "description": "Most active newsletter sponsors overall",
+              "prompt": "Which companies sponsor the most newsletters right now?",
+              "tools_triggered": "list_brands_sponsoring_newsletters",
+              "expected_behavior": "Returns the total brands and newsletters Book a Sponsor has seen and the 20 brands seen in the most newsletters, with domains, newsletter counts, last ad date and recent newsletters."
+            },
+            {
+              "description": "What to charge for a newsletter sponsorship at a given list size",
+              "prompt": "How much should I charge for the main sponsor slot in my newsletter? I have 12,000 subscribers.",
+              "tools_triggered": "get_newsletter_sponsorship_rates",
+              "expected_behavior": "Returns the median, low and high list price of the main sponsor slot for five list-size bands with the number of newsletters in each, says a 12,000-subscriber list is in the 5,000 to 19,999 band, and gives the date the prices were read and the source page."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Contact details for a person at a brand: the plugin returns brands only",
+              "prompt": "Give me the email address of the marketing manager at Attio."
+            },
+            {
+              "description": "Sending a pitch: the plugin cannot send email",
+              "prompt": "Send a sponsorship pitch to Wispr Flow for my newsletter."
+            },
+            {
+              "description": "A YouTube channel is not a newsletter: the plugin covers newsletters only",
+              "prompt": "Find sponsors for my YouTube channel youtube.com/@mkbhd."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "First release: find brands that sponsored similar newsletters, read a scan back, list brands sponsoring newsletters by topic, and newsletter sponsorship rates by list size."
+      }
+    }
+  }
+}
