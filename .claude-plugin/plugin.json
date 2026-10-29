@@ -1,13 +1,13 @@
 {
   "name": "book-a-sponsor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find the brands that sponsor newsletters like yours, see where and when their ads ran, and check what newsletters charge for a sponsor slot.",
   "author": {
     "name": "Sales.co",
     "email": "hello@sponsorradar.co",
     "url": "https://bookasponsor.com"
   },
-  "homepage": "https://bookasponsor.com",
+  "homepage": "https://bookasponsor.com/mcp",
   "repository": "https://github.com/rdoyle99/book-a-sponsor-plugin",
   "license": "MIT",
   "keywords": [

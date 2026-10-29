@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "book-a-sponsor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find the brands that sponsor newsletters like yours, see where and when their ads ran, and check what newsletters charge for a sponsor slot.",
   "author": {
     "name": "Sales.co",

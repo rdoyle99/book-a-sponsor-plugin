@@ -20,9 +20,15 @@ Results name brands, never people or email addresses.
 - "What should I charge for a sponsor slot at 12,000 subscribers?"
 
 ## Install
-- **Claude Code / Cursor / other Agent Plugin hosts:** install this repo as a plugin, or add the server yourself:
+- **Claude Code:** this repo is a plugin marketplace. Install the plugin (MCP server + skill) with:
+  ```
+  /plugin marketplace add rdoyle99/book-a-sponsor-plugin
+  /plugin install book-a-sponsor@book-a-sponsor
+  ```
+- **Skill only (Claude Code, Cursor, Codex and other agents):** `npx skills add rdoyle99/book-a-sponsor-plugin`
+- **Server only (Claude Code, Cursor, other hosts):**
   `claude mcp add --transport http book-a-sponsor https://bookasponsor.com/mcp`
-- **Any MCP client:** use `.mcp.json` / `mcp.json` in this repo.
+- **Any MCP client:** `.mcp.json` is the Claude Code shape (`"type": "http"`); `mcp.json` is the Agent Plugins shape (`"type": "streamable-http"`). Both point at the same server.
 
 Also listed in the official MCP registry as `com.bookasponsor/book-a-sponsor`.
 

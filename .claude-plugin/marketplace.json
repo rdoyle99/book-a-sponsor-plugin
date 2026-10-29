@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "book-a-sponsor",
+  "owner": {
+    "name": "Sales.co",
+    "email": "hello@sponsorradar.co"
+  },
+  "metadata": {
+    "description": "Book a Sponsor: newsletter sponsor data for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "book-a-sponsor",
+      "source": "./",
+      "description": "Find the brands that sponsor newsletters like yours, see where and when their ads ran, and check what newsletters charge for a sponsor slot.",
+      "version": "1.0.1",
+      "author": {
+        "name": "Sales.co",
+        "email": "hello@sponsorradar.co"
+      },
+      "homepage": "https://bookasponsor.com/mcp",
+      "repository": "https://github.com/rdoyle99/book-a-sponsor-plugin",
+      "license": "MIT",
+      "keywords": [
+        "newsletter",
+        "sponsors",
+        "sponsorship",
+        "newsletter monetization",
+        "advertising",
+        "mcp"
+      ],
+      "category": "data"
+    }
+  ]
+}
